@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  jenkins-data:
+    image: jenkins-data
+    #volumes:
+      #- $PWD/jenkinsDataVolume/jenkins_home/:/var/jenkins_home/
+
+  jenkins-master:
+    image: jenkins-master
+    ports:
+     - 8080:8080
+     - 50000:50000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    volumes_from:
+      - jenkins-data
