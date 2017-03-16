@@ -1,5 +1,7 @@
 # Start a Jenkins 2.0 with a basic admin user
-The aim of this project is to get rid of all painfull configurations that you need to do when you start a Jenkins.
+The aim of this project is to get rid of all painful configuration that you need to do when you start a Jenkins.
+
+In this configuration I used Jenkins master in a docker container with a volume docker container for the jenkins_home. By this way you don't have to worry to remove the jenkins master and recreate an other one. You can also easily add jenkins slave by the command `$ docker run --name myJenkinsSlave -p 8080:8080 -p 50001:50001 --env JENKINS_SLAVE_AGENT_PORT=50001 jenkins`
 
 Default user is `admin` and the password is `admin`
 
