@@ -37,4 +37,3 @@ RUN touch /var/run/docker.sock
 RUN chown :docker /var/run/docker.sock
 
 
-USER ${user}
