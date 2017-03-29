@@ -22,18 +22,18 @@ RUN apk update && apk add docker
 
 COPY config.xml /usr/share/jenkins/ref/config.xml.override
 
-USER ${user}
-#Image specific
-COPY plugins.txt /
-#RUN plugins.sh plugins.txt
 
-USER root
 RUN echo 2.0 > /usr/share/jenkins/ref/jenkins.install.UpgradeWizard.state
 COPY basic-security.groovy /usr/share/jenkins/ref/init.groovy.d
 
-#add user to docker group
-RUN addgroup jenkins docker
-RUN touch /var/run/docker.sock
-RUN chown :docker /var/run/docker.sock
 
+# from a derived Dockerfile, can use `RUN plugins.sh active.txt` to setup /usr/share/jenkins/ref/plugins from a support bundle
+COPY install-plugins.sh /usr/local/bin/install-plugins.sh
+
+#Image specific
+COPy plugins.txt /
+RUN install-plugins.sh $(cat plugins.txt)
+
+
+USER ${user}
 

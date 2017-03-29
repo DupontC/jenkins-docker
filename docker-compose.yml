@@ -3,6 +3,7 @@ version: '2'
 services:
   jenkins-data:
     image: jenkins-data
+    container_name: jenkins-data
     #volumes:
       #- $PWD/jenkinsDataVolume/jenkins_home/:/var/jenkins_home/
 
