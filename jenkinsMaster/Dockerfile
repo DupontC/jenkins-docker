@@ -1,4 +1,4 @@
-FROM jenkinsci/blueocean:1.0.0-b25
+FROM jenkinsci/blueocean
 
 ARG user=jenkins
 ARG group=jenkins
@@ -36,4 +36,3 @@ RUN install-plugins.sh $(cat plugins.txt)
 
 
 USER ${user}
-
