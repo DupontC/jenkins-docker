@@ -18,7 +18,7 @@ RUN MAVEN_VERSION=3.3.3 \
 ENV MAVEN_HOME /usr/share/maven
 
 
-RUN apk update && apk add docker
+RUN apk update && apk add docker && apk add alpine-sdk
 
 COPY config.xml /usr/share/jenkins/ref/config.xml.override
 
